@@ -317,8 +317,7 @@ if __name__ == "__main__":
                         print(Colorate.Horizontal(Colors.rainbow, 'SUCCESSFUL'))
                         print(Colorate.Horizontal(Colors.rainbow, '======================================'))
                         answ = Prompt.ask("[?] Do You want to Exit ?", choices=["y", "n"], default="n")
-                        if answ == "y": print(Colorate.Horizontal(Colors.rainbow, f'Thank You for using our tool, please join
-                        f'Thank You for using our tool, please join our telegram channe: @{__CHANNEL_USERNAME__}.'))
+                        if answ == "y": print(Colorate.Horizontal(Colors.rainbow, f'Thank You for using our tool, please join our telegram channe: @{__CHANNEL_USERNAME__}.'))
                         else: continue
                     else:
                         print(Colorate.Horizontal(Colors.rainbow, 'FAILED.'))
@@ -601,4 +600,57 @@ if __name__ == "__main__":
                     sleep(2)
                     continue
             elif service == 26: # Clone Account
-                print(Colorate.Horizontal(Colors.rainbow, '[!] Please Enter Account Detalis.'
+                print(Colorate.Horizontal(Colors.rainbow, '[!] Please Enter Account Detalis.'))
+                to_email = prompt_valid_value("[?] Account Email", "Email", password=False)
+                to_password = prompt_valid_value("[?] Account Password", "Password", password=False)
+                console.print("[%] Cloning your account: ", end=None)
+                if cpm.account_clone(to_email, to_password):
+                    print(Colorate.Horizontal(Colors.rainbow, 'SUCCESSFUL'))
+                    print(Colorate.Horizontal(Colors.rainbow, '======================================'))
+                    answ = Prompt.ask("[?] Do You want to Exit ?", choices=["y", "n"], default="n")
+                    if answ == "y": print(Colorate.Horizontal(Colors.rainbow, f'Thank You for using our tool, please join our telegram channe: @{__CHANNEL_USERNAME__}.'))
+                    else: continue
+                        
+                    print(Colorate.Horizontal(Colors.rainbow, 'FAILED.'))
+                    print(Colorate.Horizontal(Colors.rainbow, '[!] Please use valid values.'))
+                    sleep(2)
+                    continue
+            elif service == 27:
+                console.print("[bold yellow][!] Note[/bold yellow]: original speed can not be restored!.")
+                console.print("[bold cyan][!] Enter Car Details.[/bold cyan]")
+                car_id = IntPrompt.ask("[bold][?] Car Id[/bold]")
+                console.print("[bold cyan][%] Hacking Car Speed[/bold cyan]:",end=None)
+                if cpm.hack_car_speed(car_id):
+                    console.print("[bold green]SUCCESFUL (✔)[/bold green]")
+                    console.print("================================")
+                    answ = Prompt.ask("[?] Do You want to Exit ?", choices=["y", "n"], default="n")
+                    if answ == "y": print(Colorate.Horizontal(Colors.rainbow, f'Thank You for using our tool, please join our telegram channe: @{__CHANNEL_USERNAME__}.'))
+                    else: continue
+                else:
+                    print(Colorate.Horizontal(Colors.rainbow, 'FAILED.'))
+                    print(Colorate.Horizontal(Colors.rainbow, '[!] Please use valid values.'))
+                    sleep(2)
+                    continue
+            elif service == 28: # ANGLE
+                print(Colorate.Horizontal(Colors.rainbow, '[!] ENTER CAR DETALIS'))
+                car_id = IntPrompt.ask("[red][?] CAR ID[/red]")
+                print(Colorate.Horizontal(Colors.rainbow, '[!] ENTER STEERING ANGLE'))
+                custom = IntPrompt.ask("[red][?]﻿ENTER THE AMOUNT OF ANGLE YOU WANT[/red]")                
+                console.print("[red][%] HACKING CAR ANGLE[/red]: ", end=None)
+                if cpm.max_max1(car_id, custom):
+                    print(Colorate.Horizontal(Colors.rainbow, 'SUCCESSFUL'))
+                    answ = Prompt.ask("[red][?] DO YOU WANT TO EXIT[/red] ?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print("THANK YOU FOR USING OUR TOOL")
+                    else: continue
+                else:
+                    print(Colorate.Horizontal(Colors.rainbow, 'FAILED'))
+                    print(Colorate.Horizontal(Colors.rainbow, 'PLEASE TRY AGAIN'))
+                    sleep(2)
+                    continue                                        
+            else: continue
+            break
+        break
+            
+        
+            
+              
