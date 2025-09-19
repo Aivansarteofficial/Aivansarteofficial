@@ -141,6 +141,13 @@
     font-size: 12px;
     font-weight: 700;
   }
+
+  /* Typing effect */
+  .typing {
+    display: inline-block;
+    white-space: pre-line; /* para gumana ang line breaks */
+    overflow: hidden;
+  }
 </style>
 </head>
 <body>
@@ -150,8 +157,8 @@
 
 <div class="vip-card">
   <div class="vip-header">
-    <div class="rainbow-text">PROFILE CARD</div>
-    <div class="card-number rainbow-text">ID: 2025-VIP-7891</div>
+    <div class="rainbow-text typing" data-text="PROFILE CARD"></div>
+    <div class="card-number rainbow-text typing" data-text="ID: 2025-VIP-7891"></div>
   </div>
 
   <div class="photo-section">
@@ -159,19 +166,17 @@
   </div>
 
   <div class="member-info">
-    <div class="member-name rainbow-text">Aivan Junrel Sarte</div>
-    <div class="member-details rainbow-text">
-      BORN: MARCH 28, 2009<br>
-      AGE: 16<br>
-      SEX: MALE<br>
-      CRUSH: JADE DABON<br>
-      ADDRESS:BICAO,CARMEN,BOHOL<br>  
-    </div>
+    <div class="member-name rainbow-text typing" data-text="Aivan Junrel Sarte"></div>
+    <div class="member-details rainbow-text typing" data-text="BORN: MARCH 28, 2009
+AGE: 16
+SEX: MALE
+CRUSH: JADE DABON
+ADDRESS: BICAO, CARMEN, BOHOL"></div>
   </div>
 
   <div class="status-bar">
-    <div class="vip-status rainbow-text">PROFILE INFORMATION</div>
-    <div class="validity rainbow-text">VALID THRU: 12/30</div>
+    <div class="vip-status rainbow-text typing" data-text="PROFILE INFORMATION"></div>
+    <div class="validity rainbow-text typing" data-text="VALID THRU: 12/30"></div>
   </div>
 </div>
 
@@ -208,9 +213,28 @@ function draw() {
     drops[i]++;
   }
 }
-
 setInterval(draw, 33);
+
+/* Typing effect script */
+function typeEffect(element, text, speed) {
+  let i = 0;
+  element.textContent = "";
+  function typing() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+  typing();
+}
+
+window.onload = function() {
+  document.querySelectorAll(".typing").forEach(el => {
+    typeEffect(el, el.getAttribute("data-text"), 40);
+  });
+};
 </script>
 
 </body>
-  </html>
+</html>
