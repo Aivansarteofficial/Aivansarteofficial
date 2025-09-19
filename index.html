@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REALISTIC PROFILE CARD — Aivan Junrel Sarte</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  /* Binary hacker rain background */
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+  }
+
+  /* Card container */
+  .vip-card {
+    width: 500px;
+    height: 300px;
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(15, 23, 42, 0.9);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7),
+                0 0 30px rgba(255, 0, 255, 0.4),
+                0 0 50px rgba(0, 255, 255, 0.3);
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Rainbow text */
+  .rainbow-text {
+    background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet, red);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 8s linear infinite, shimmer 3s infinite;
+  }
+
+  @keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes shimmer {
+    0% { text-shadow: 0 0 5px gold, 0 0 10px red; }
+    50% { text-shadow: 0 0 20px cyan, 0 0 30px violet; }
+    100% { text-shadow: 0 0 5px gold, 0 0 10px red; }
+  }
+
+  /* Header */
+  .vip-header {
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+  .card-number {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Photo */
+  .photo-section {
+    position: absolute;
+    left: 30px;
+    top: 70px;
+    width: 120px;
+    height: 123px;
+    border: 3px solid gold;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #E5E4E2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  }
+
+  .photo-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Info */
+  .member-info {
+    position: absolute;
+    top: 80px;
+    left: 170px;
+    right: 30px;
+  }
+
+  .member-name {
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .member-details {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Status bar */
+  .status-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .vip-status, .validity {
+    font-size: 12px;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<!-- Binary Background -->
+<canvas id="matrix"></canvas>
+
+<div class="vip-card">
+  <div class="vip-header">
+    <div class="rainbow-text">PROFILE CARD</div>
+    <div class="card-number rainbow-text">ID: 2025-VIP-7891</div>
+  </div>
+
+  <div class="photo-section">
+    <img src="your-photo.jpg" alt="Profile Photo">
+  </div>
+
+  <div class="member-info">
+    <div class="member-name rainbow-text">Aivan Junrel Sarte</div>
+    <div class="member-details rainbow-text">
+      BORN: MARCH 28, 2009<br>
+      AGE: 16<br>
+      SEX: MALE<br>
+      CRUSH: JADE DABON<br>
+      ADDRESS:BICAO,CARMEN,BOHOL<br>  
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <div class="vip-status rainbow-text">PROFILE INFORMATION</div>
+    <div class="validity rainbow-text">VALID THRU: 12/30</div>
+  </div>
+</div>
+
+<script>
+/* Binary Matrix Rain Effect */
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const binary = "01";
+const font_size = 14;
+const columns = canvas.width / font_size;
+let drops = [];
+
+for(let x = 0; x < columns; x++)
+  drops[x] = 1;
+
+function draw() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#0f0";
+  ctx.font = font_size + "px monospace";
+
+  for(let i = 0; i < drops.length; i++) {
+    let text = binary[Math.floor(Math.random() * binary.length)];
+    ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+    if(drops[i] * font_size > canvas.height && Math.random() > 0.975)
+      drops[i] = 0;
+
+    drops[i]++;
+  }
+}
+
+setInterval(draw, 33);
+</script>
+
+</body>
+  </html>
