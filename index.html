@@ -3,19 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>REALISTIC PROFILE CARD — Aivan Junrel Sarte</title>
+<title>JADE DABON </title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@500;700&display=swap');
 
   body {
-    font-family: 'Inter', sans-serif;
-    background: #0f172a;
+    font-family: 'Share Tech Mono', monospace;
+    background: #0a0a0a;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
     overflow: hidden;
+    color: #fff;
   }
 
   /* Binary hacker rain background */
@@ -33,11 +34,12 @@
     position: relative;
     border-radius: 18px;
     overflow: hidden;
-    background: rgba(15, 23, 42, 0.9);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7),
-                0 0 30px rgba(255, 0, 255, 0.4),
-                0 0 50px rgba(0, 255, 255, 0.3);
+    background: rgba(10, 10, 10, 0.9);
+    box-shadow: 0 0 20px rgba(255,0,0,0.8), 
+                0 0 60px rgba(255,0,0,0.5), 
+                inset 0 0 30px rgba(255,0,0,0.2);
     animation: floating 6s ease-in-out infinite;
+    border: 2px solid rgba(255,0,0,0.8);
   }
 
   @keyframes floating {
@@ -45,13 +47,15 @@
     50% { transform: translateY(-8px); }
   }
 
-  /* Rainbow text */
+  /* Rainbow hacker neon text */
   .rainbow-text {
-    background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet, red);
-    background-size: 600% 600%;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, violet, red);
+    background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: rainbow 8s linear infinite, shimmer 3s infinite;
+    animation: rainbow 6s linear infinite, glitch 2s infinite;
+    position: relative;
   }
 
   @keyframes rainbow {
@@ -60,10 +64,14 @@
     100% { background-position: 0% 50%; }
   }
 
-  @keyframes shimmer {
-    0% { text-shadow: 0 0 5px gold, 0 0 10px red; }
-    50% { text-shadow: 0 0 20px cyan, 0 0 30px violet; }
-    100% { text-shadow: 0 0 5px gold, 0 0 10px red; }
+  /* Glitch hacker effect */
+  @keyframes glitch {
+    0% { text-shadow: 2px 2px 5px rgba(255,0,0,0.8); }
+    20% { text-shadow: -2px -2px 5px rgba(0,255,255,0.8); }
+    40% { text-shadow: 2px -2px 6px rgba(255,0,255,0.8); }
+    60% { text-shadow: -2px 2px 6px rgba(255,255,0,0.8); }
+    80% { text-shadow: 3px 0 8px rgba(255,0,0,0.9); }
+    100% { text-shadow: 0px 0px 6px rgba(255,0,0,1); }
   }
 
   /* Header */
@@ -81,7 +89,7 @@
   }
 
   .card-number {
-    font-family: 'Courier New', monospace;
+    font-family: 'Share Tech Mono', monospace;
     font-size: 12px;
     font-weight: 600;
   }
@@ -93,11 +101,11 @@
     top: 70px;
     width: 120px;
     height: 123px;
-    border: 3px solid gold;
+    border: 2px solid rgba(255,0,0,0.9);
     border-radius: 10px;
     overflow: hidden;
-    background: #E5E4E2;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    background: #111;
+    box-shadow: 0 0 20px rgba(255,0,0,0.7);
   }
 
   .photo-section img {
@@ -145,7 +153,7 @@
   /* Typing effect */
   .typing {
     display: inline-block;
-    white-space: pre-line; /* para gumana ang line breaks */
+    white-space: pre-line;
     overflow: hidden;
   }
 </style>
@@ -157,25 +165,24 @@
 
 <div class="vip-card">
   <div class="vip-header">
-    <div class="rainbow-text typing" data-text="PROFILE CARD"></div>
+    <div class="rainbow-text typing" data-text=" PROFILE INFORMATION"></div>
     <div class="card-number rainbow-text typing" data-text="ID: 2025-VIP-7891"></div>
   </div>
 
   <div class="photo-section">
-    <img src="your-photo.jpg" alt="Profile Photo">
+    <img src="aivan.jpg" alt="Profile Photo">
   </div>
 
   <div class="member-info">
-    <div class="member-name rainbow-text typing" data-text="Aivan Junrel Sarte"></div>
-    <div class="member-details rainbow-text typing" data-text="BORN: MARCH 28, 2009
+    <div class="member-name rainbow-text typing" data-text=" SARTZ AIVAN"></div>
+    <div class="member-details rainbow-text typing" data-text="BORN: MARCH,28,2009
 AGE: 16
 SEX: MALE
-CRUSH: JADE DABON
-ADDRESS: BICAO, CARMEN, BOHOL"></div>
+ADDRESS:BICAO,CARMEN,BOHOL">"</div>
   </div>
 
   <div class="status-bar">
-    <div class="vip-status rainbow-text typing" data-text="PROFILE INFORMATION"></div>
+    <div class="vip-status rainbow-text typing" data-text="I T DATA INFORMATION"></div>
     <div class="validity rainbow-text typing" data-text="VALID THRU: 12/30"></div>
   </div>
 </div>
@@ -200,7 +207,7 @@ function draw() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "#0f0";
+  ctx.fillStyle = "#ff0000"; // red hacker rain
   ctx.font = font_size + "px monospace";
 
   for(let i = 0; i < drops.length; i++) {
